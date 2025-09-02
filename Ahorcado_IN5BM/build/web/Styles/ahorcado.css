@@ -58,7 +58,7 @@ body {
 .tiempo {
     font-size: clamp(1.6rem, 3.5vw, 2.5rem);
     background: linear-gradient(135deg, #1a202c, #2d3748);
-    color: #68d391;
+    color: #f7fafc;
     padding: clamp(10px, 2vw, 15px) clamp(20px, 3vw, 25px);
     border-radius: 15px;
     display: inline-block;
@@ -161,7 +161,7 @@ body {
     margin-bottom: 20px;
 }
 
-#word-display {
+#palabra{
     font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-family: 'Courier New', monospace;
     color: #2d3748;
@@ -211,7 +211,7 @@ body {
 }
 
 .btn-letra.used {
-    background: linear-gradient(135deg, #f56565, #e53e3e);
+    background: #3182ce;
     color: white;
     cursor: not-allowed;
     opacity: 0.8;
@@ -294,7 +294,7 @@ body {
     position: relative;
 }
 
-#message {
+#mensaje {
     margin-top: 10px;
     font-weight: bold;
     text-align: center;

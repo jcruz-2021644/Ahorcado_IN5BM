@@ -11,6 +11,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ahorcado</title>
+        <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/Images/logo.jpg">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/Styles/ahorcado.css"/>
 
     </head>
@@ -24,7 +25,6 @@
             <div class="contenedor-principal" >
                 <div class="area-dibujo">
                 </div>
-
                 <div class="seccion-abecedario">
 
                     <div class="botones-control">
@@ -34,12 +34,11 @@
                         <button class="button-acciones" id="btn-salir">Pausar</button>
                     </div>
 
-
                     <div class="contenedor-abecedario" >
                         <div class="word-container">
-                            <p id="word-display">¡Presiona Iniciar para comenzar!</p>
+                            <p id="palabra">¡Presiona Iniciar para comenzar!</p>
                         </div>
-                        <div class="abecedario-tabla" id="keyboard">
+                        <div class="abecedario-tabla" id="teclado">
                             <button class="btn-letra">A</button>
                             <button class="btn-letra">B</button>
                             <button class="btn-letra">C</button>
@@ -73,15 +72,15 @@
             </div>
             <div class="seccion-abajo">
                 <div class="cuadro-intentos" >
-                    <div class="numero-intentos" id="attempts">6</div>
+                    <div class="numero-intentos" id="intentos">6</div>
                     <span>INTENTOS</span>
                 </div>
                 <div class="rectangulo-pista" >
-                    <p id="clue">Pista: ¡Haz clic en "Iniciar" para comenzar el juego!</p>
-                    <div id="message"></div>
+                    <p id="pista">Pista: ¡Haz clic en "Iniciar" para comenzar el juego!</p>
+                    <div id="mensaje"></div>
                 </div>
-                <div class="cuadro-imagen" >
-                    <img src="../Images/torrefacto.jpg" alt="alt"/>
+                <div class="cuadro-imagen">
+                    <img id="imagen" alt="Imagen de la palabra"/>
                 </div>
             </div>
         </div>

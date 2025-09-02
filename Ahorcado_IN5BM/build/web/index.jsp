@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>Creacion de la estrucutra del proyecto de ahorcado</h1>
+        <a href="${pageContext.request.contextPath}/Index/ahorcado.jsp">ahorcado</a>
     </body>
 </html>

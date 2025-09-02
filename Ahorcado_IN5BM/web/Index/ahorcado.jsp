@@ -24,14 +24,16 @@
 
             <div class="contenedor-principal" >
                 <div class="area-dibujo">
+                    <!-- Aquí aparecerá la imagen del ahorcado cuando cometas errores -->
+                    <img id="imagen-ahorcado"  alt="Ahorcado">
                 </div>
                 <div class="seccion-abecedario">
 
                     <div class="botones-control">
                         <button class="button-acciones" id="btn-iniciar">Iniciar</button>
                         <button class="button-acciones" id="btn-reiniciar">Reiniciar</button>
-                        <button class="button-acciones" id="btn-pausar">Salir</button>
-                        <button class="button-acciones" id="btn-salir">Pausar</button>
+                        <button class="button-acciones" id="btn-pausar">Pausar</button>
+                        <button class="button-acciones" id="btn-salir">Salir</button>
                     </div>
 
                     <div class="contenedor-abecedario" >
@@ -39,33 +41,7 @@
                             <p id="palabra">¡Presiona Iniciar para comenzar!</p>
                         </div>
                         <div class="abecedario-tabla" id="teclado">
-                            <button class="btn-letra">A</button>
-                            <button class="btn-letra">B</button>
-                            <button class="btn-letra">C</button>
-                            <button class="btn-letra">D</button>
-                            <button class="btn-letra">E</button>
-                            <button class="btn-letra">F</button>
-                            <button class="btn-letra">G</button>
-                            <button class="btn-letra">H</button>
-                            <button class="btn-letra">I</button>
-                            <button class="btn-letra">J</button>
-                            <button class="btn-letra">K</button>
-                            <button class="btn-letra">L</button>
-                            <button class="btn-letra">M</button>
-                            <button class="btn-letra">N</button>
-                            <button class="btn-letra">Ñ</button>
-                            <button class="btn-letra">O</button>
-                            <button class="btn-letra">P</button>
-                            <button class="btn-letra">Q</button>
-                            <button class="btn-letra">R</button>
-                            <button class="btn-letra">S</button>
-                            <button class="btn-letra">T</button>
-                            <button class="btn-letra">U</button>
-                            <button class="btn-letra">V</button>
-                            <button class="btn-letra">W</button>
-                            <button class="btn-letra">X</button>
-                            <button class="btn-letra">Y</button>
-                            <button class="btn-letra">Z</button>
+                            <!-- al final elimine mi listado porque los botones los tengo que crear en el for -->
                         </div>
                     </div>
                 </div>
@@ -80,7 +56,7 @@
                     <div id="mensaje"></div>
                 </div>
                 <div class="cuadro-imagen">
-                    <img id="imagen" alt="Imagen de la palabra"/>
+                    <img id="imagen" />
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@
 body {
     font-family: 'Courier New', monospace;
     font-weight: bold;
-    background-image: url(../Images/FondoAhorcado.png);
+    background-image: url(../Images/ahorcadoFondo.gif);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -16,7 +16,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: clamp(10px, 2vw, 20px);
+    padding: clamp(5px, 1vw, 20px);
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
@@ -24,13 +24,13 @@ body {
 
 .contenedor-juego {
     background: transparent;
-    padding: clamp(15px, 3vw, 30px);
-    border-radius: 20px;
-    border: 4px solid #4a5568;
+    padding: clamp(10px, 2vw, 30px);
+    border-radius: clamp(10px, 2vw, 20px);
+    border: clamp(2px, 0.3vw, 4px) solid #4a5568;
     box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 clamp(10px, 2vw, 20px) clamp(20px, 4vw, 40px) rgba(0, 0, 0, 0.3),
         0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-    max-width: min(95vw, 1400px);
+    max-width: min(98vw, 1400px);
     width: 100%;
     backdrop-filter: blur(10px);
     position: relative;
@@ -38,35 +38,35 @@ body {
 
 .header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: clamp(15px, 3vw, 30px);
     position: relative;
 }
 
 .titulo {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    background: linear-gradient(135deg, #4a5568, #2d3748);
+    font-size: clamp(1.5rem, 6vw, 3.5rem);
+    background:#ffffff;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: clamp(15px, 2vw, 20px);
-    letter-spacing: clamp(2px, 0.5vw, 4px);
+    margin-bottom: clamp(10px, 2vw, 20px);
+    letter-spacing: clamp(1px, 0.5vw, 4px);
     font-family: 'Courier New', monospace;
     position: relative;
 }
 
 .tiempo {
-    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
-    background: linear-gradient(135deg, #1a202c, #2d3748);
-    color: #f7fafc;
-    padding: clamp(10px, 2vw, 15px) clamp(20px, 3vw, 25px);
-    border-radius: 15px;
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
+    background: #edf2f7;
+    color: blueviolet;
+    padding: clamp(8px, 1.5vw, 15px) clamp(15px, 3vw, 25px);
+    border-radius: clamp(8px, 1.5vw, 15px);
     display: inline-block;
     font-family: 'Courier New', monospace;
-    border: 2px solid #4a5568;
-    letter-spacing: clamp(1px, 0.3vw, 2px);
+    border: clamp(1px, 0.2vw, 2px) solid #4a5568;
+    letter-spacing: clamp(0.5px, 0.3vw, 2px);
     box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.3),
+        0 clamp(2px, 0.5vw, 4px) clamp(6px, 1.5vw, 12px) rgba(0, 0, 0, 0.3),
         0 0 0 1px rgba(104, 211, 145, 0.2) inset;
     position: relative;
     overflow: hidden;
@@ -74,24 +74,44 @@ body {
 
 .contenedor-principal {
     display: grid;
-    grid-template-columns: minmax(300px, 1fr) minmax(350px, 1fr);
-    gap: clamp(20px, 3vw, 30px);
-    margin-bottom: clamp(20px, 3vw, 30px);
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: clamp(15px, 3vw, 30px);
+    margin-bottom: clamp(15px, 3vw, 30px);
 }
 
 .area-dibujo {
     background: linear-gradient(135deg, #f7fafc, #edf2f7);
-    border: 3px solid #4a5568;
-    border-radius: 15px;
-    min-height: clamp(200px, 25vw, 350px);
+    border: clamp(2px, 0.3vw, 3px) solid #4a5568;
+    border-radius: clamp(10px, 2vw, 15px);
+    min-height: clamp(180px, 30vw, 350px);
+    aspect-ratio: 4/3;
     backdrop-filter: blur(2px);
     box-shadow:
-        0 8px 16px rgba(0, 0, 0, 0.1) inset,
-        0 4px 12px rgba(0, 0, 0, 0.1);
+        0 clamp(4px, 1vw, 8px) clamp(8px, 2vw, 16px) rgba(0, 0, 0, 0.1) inset,
+        0 clamp(2px, 0.5vw, 4px) clamp(6px, 1.5vw, 12px) rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
+}
+
+#imagen-ahorcado {
+    max-width: min(90%, 300px);
+    max-height: min(90%, 300px);
+    width: auto;
+    height: auto;
+    border-radius: clamp(4px, 1vw, 8px);
+    box-shadow: 0 clamp(2px, 0.5vw, 4px) clamp(4px, 1vw, 8px) rgba(0,0,0,0.1);
+    object-fit: contain;
+}
+
+.mensaje-area {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: clamp(10px, 2vw, 20px);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
 }
 
 .hangman-image {
@@ -103,14 +123,14 @@ body {
 .seccion-abecedario {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: clamp(15px, 2vw, 20px);
 }
 
 .botones-control {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: clamp(8px, 1.5vw, 12px);
-    margin-bottom: clamp(15px, 2vw, 20px);
+    grid-template-columns: repeat(auto-fit, minmax(min(120px, 100%), 1fr));
+    gap: clamp(6px, 1vw, 12px);
+    margin-bottom: clamp(10px, 2vw, 20px);
 }
 
 .button-acciones {
@@ -120,24 +140,26 @@ body {
     overflow: hidden;
     z-index: 1;
     color: #ffffff;
-    padding: 0.8em 1.5em;
+    padding: clamp(8px, 1.5vw, 12px) clamp(12px, 2vw, 20px);
     cursor: pointer;
-    font-size: 14px;
-    border-radius: 0.5em;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    border-radius: clamp(6px, 1vw, 8px);
     background: #000;
-    border: 2px solid #00ffea;
-    box-shadow: 0 0 20px rgba(0, 255, 234, 0.5);
+    border: clamp(1px, 0.2vw, 2px) solid #00ffea;
+    box-shadow: 0 0 clamp(10px, 2vw, 20px) rgba(0, 255, 234, 0.5);
     font-family: 'Courier New', monospace;
+    min-height: clamp(40px, 6vw, 50px);
+    white-space: nowrap;
 }
 
 .button-acciones:hover {
-    box-shadow: 0 0 30px rgba(0, 255, 234, 0.7);
+    box-shadow: 0 0 clamp(15px, 3vw, 30px) rgba(0, 255, 234, 0.7);
     transform: translateY(-2px);
 }
 
 .button-acciones:active {
     color: #ffffff;
-    box-shadow: inset 0 0 10px rgba(0, 255, 234, 0.7);
+    box-shadow: inset 0 0 clamp(5px, 1vw, 10px) rgba(0, 255, 234, 0.7);
     transform: translateY(0);
 }
 
@@ -148,43 +170,45 @@ body {
 
 .contenedor-abecedario {
     background: linear-gradient(135deg, #f7fafc, #edf2f7);
-    border: 3px solid #4a5568;
-    border-radius: 15px;
-    padding: 20px;
+    border: clamp(2px, 0.3vw, 3px) solid #4a5568;
+    border-radius: clamp(10px, 2vw, 15px);
+    padding: clamp(15px, 2vw, 20px);
     position: relative;
     backdrop-filter: blur(2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 clamp(2px, 0.5vw, 4px) clamp(6px, 1.5vw, 12px) rgba(0, 0, 0, 0.1) inset;
 }
 
 .word-container {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: clamp(15px, 2vw, 20px);
 }
 
-#palabra{
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
+#palabra {
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
     font-family: 'Courier New', monospace;
     color: #2d3748;
     font-weight: bold;
-    letter-spacing: 0.2em;
+    letter-spacing: clamp(0.1em, 0.3vw, 0.2em);
     margin: 0;
+    word-break: break-all;
+    line-height: 1.2;
 }
 
 .abecedario-tabla {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
-    gap: clamp(6px, 1vw, 8px);
+    grid-template-columns: repeat(auto-fit, minmax(clamp(35px, 8vw, 50px), 1fr));
+    gap: clamp(4px, 1vw, 8px);
     max-width: 100%;
     justify-items: center;
 }
 
 .btn-letra {
-    width: clamp(40px, 7vw, 50px);
-    height: clamp(40px, 7vw, 50px);
+    width: clamp(35px, 8vw, 50px);
+    height: clamp(35px, 8vw, 50px);
     background: linear-gradient(135deg, #ffffff, #f7fafc);
-    border: 2px solid #4a5568;
-    border-radius: 10px;
-    font-size: clamp(1rem, 2.2vw, 1.3rem);
+    border: clamp(1px, 0.2vw, 2px) solid #4a5568;
+    border-radius: clamp(6px, 1.5vw, 10px);
+    font-size: clamp(0.8rem, 2.5vw, 1.3rem);
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -193,7 +217,7 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Courier New', monospace;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 clamp(1px, 0.3vw, 2px) clamp(2px, 0.5vw, 4px) rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
 }
@@ -202,7 +226,7 @@ body {
     background: linear-gradient(135deg, #48bb78, #38a169);
     color: white;
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 12px rgba(72, 187, 120, 0.3);
+    box-shadow: 0 clamp(3px, 1vw, 6px) clamp(6px, 1.5vw, 12px) rgba(72, 187, 120, 0.3);
     border-color: #38a169;
 }
 
@@ -216,7 +240,7 @@ body {
     cursor: not-allowed;
     opacity: 0.8;
     transform: none;
-    box-shadow: 0 2px 4px rgba(245, 101, 101, 0.3) inset;
+    box-shadow: 0 clamp(1px, 0.3vw, 2px) clamp(2px, 0.5vw, 4px) rgba(245, 101, 101, 0.3) inset;
 }
 
 .btn-letra:disabled {
@@ -227,78 +251,84 @@ body {
 .seccion-abajo {
     display: flex;
     align-items: stretch;
-    gap: clamp(15px, 2.5vw, 20px);
+    gap: clamp(10px, 2vw, 20px);
     flex-wrap: wrap;
 }
 
 .cuadro-intentos {
     background: linear-gradient(135deg, #f7fafc, #edf2f7);
-    border: 3px solid #4a5568;
-    border-radius: 15px;
-    padding: clamp(12px, 2vw, 15px);
+    border: clamp(2px, 0.3vw, 3px) solid #4a5568;
+    border-radius: clamp(10px, 2vw, 15px);
+    padding: clamp(10px, 2vw, 15px);
     display: flex;
     align-items: center;
-    gap: clamp(12px, 2vw, 15px);
+    gap: clamp(8px, 1.5vw, 15px);
     backdrop-filter: blur(2px);
     min-width: fit-content;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 clamp(2px, 0.5vw, 4px) clamp(6px, 1.5vw, 12px) rgba(0, 0, 0, 0.1);
 }
 
-
-.cuadro-imagen img{
-    background: linear-gradient(135deg, #f7fafc, #edf2f7);
-    border: 3px solid #4a5568;
-    border-radius: 15px;
-    padding: clamp(12px, 2vw, 15px);
-    display: flex;
-    align-items: center;
-    gap: clamp(12px, 2vw, 15px);
-    backdrop-filter: blur(2px);
+.cuadro-imagen {
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    max-height: 100px;
-    max-width: 176.82px;
-}
-
-.numero-intentos {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #4a5568, #2d3748);
-    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+}
+
+.cuadro-imagen img {
+    background: linear-gradient(135deg, #f7fafc, #edf2f7);
+    border: clamp(2px, 0.3vw, 3px) solid #4a5568;
+    border-radius: clamp(10px, 2vw, 15px);
+    padding: clamp(8px, 1.5vw, 15px);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 clamp(2px, 0.5vw, 4px) clamp(6px, 1.5vw, 12px) rgba(0, 0, 0, 0.1);
+    max-height: clamp(80px, 12vw, 120px);
+    max-width: clamp(120px, 18vw, 200px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.numero-intentos {
+    width: clamp(40px, 8vw, 60px);
+    height: clamp(40px, 8vw, 60px);
+    background: linear-gradient(135deg, #4a5568, #2d3748);
+    border-radius: clamp(8px, 1.5vw, 12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     color: white;
     font-weight: bold;
     box-shadow:
-        0 4px 8px rgba(0, 0, 0, 0.2),
+        0 clamp(2px, 0.5vw, 4px) clamp(4px, 1vw, 8px) rgba(0, 0, 0, 0.2),
         0 0 0 1px rgba(255, 255, 255, 0.1) inset;
 }
 
 .rectangulo-pista {
     flex: 1;
     background: linear-gradient(135deg, #ffffff, #f7fafc);
-    border: 3px solid #4a5568;
-    border-radius: 15px;
-    padding: clamp(15px, 2.5vw, 20px);
-    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    border: clamp(2px, 0.3vw, 3px) solid #4a5568;
+    border-radius: clamp(10px, 2vw, 15px);
+    padding: clamp(10px, 2vw, 20px);
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
     text-align: center;
-    line-height: 1.5;
+    line-height: 1.4;
     backdrop-filter: blur(2px);
     font-family: 'Courier New', monospace;
-    min-width: 250px;
+    min-width: min(200px, 100%);
     color: #2d3748;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 clamp(2px, 0.5vw, 4px) clamp(6px, 1.5vw, 12px) rgba(0, 0, 0, 0.1) inset;
     position: relative;
 }
 
 #mensaje {
-    margin-top: 10px;
+    margin-top: clamp(8px, 1.5vw, 10px);
     font-weight: bold;
     text-align: center;
     display: none;
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
 }
 
 .success {
@@ -313,37 +343,92 @@ body {
     color: #3182ce;
 }
 
-/* Responsive Design */
-@media (max-width: 900px) {
+/* Keyframe para pulso del cronómetro */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Media Queries para casos específicos */
+@media (max-width: 1200px) {
     .contenedor-principal {
         grid-template-columns: 1fr;
-        gap: 20px;
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
     .seccion-abajo {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+    }
+    
+    .cuadro-imagen {
+        order: -1;
+        align-self: center;
+    }
+    
+    .abecedario-tabla {
+        grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+        max-width: none;
     }
 }
 
 @media (max-width: 600px) {
     .botones-control {
-        grid-template-columns: 1fr;
-        gap: 8px;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 480px) {
     .abecedario-tabla {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 5px;
+        grid-template-columns: repeat(6, 1fr);
+        gap: clamp(3px, 1vw, 6px);
     }
-
+    
     .btn-letra {
-        width: 45px;
-        height: 45px;
-        font-size: 1.1rem;
+        min-width: 35px;
+        min-height: 35px;
+        font-size: clamp(0.7rem, 2.8vw, 1rem);
+    }
+    
+    .botones-control {
+        grid-template-columns: 1fr;
+        gap: clamp(4px, 1vw, 8px);
+    }
+}
+
+@media (max-width: 320px) {
+    .abecedario-tabla {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    
+    .contenedor-juego {
+        padding: clamp(8px, 2vw, 15px);
+    }
+}
+
+/* Para pantallas muy anchas */
+@media (min-width: 1400px) {
+    .contenedor-juego {
+        max-width: 1400px;
+    }
+}
+
+/* Orientación landscape en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: clamp(2px, 0.5vw, 10px);
+    }
+    
+    .contenedor-juego {
+        padding: clamp(8px, 1.5vw, 20px);
+    }
+    
+    .header {
+        margin-bottom: clamp(8px, 1.5vw, 15px);
+    }
+    
+    .area-dibujo {
+        min-height: clamp(120px, 20vw, 200px);
     }
 }

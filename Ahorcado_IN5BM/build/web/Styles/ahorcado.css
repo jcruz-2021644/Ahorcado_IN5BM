@@ -1,0 +1,611 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    background-image: url(../Images/FondoAhorcado.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(10px, 2vw, 20px);
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+
+/* Contenedor principal del juego */
+.contenedor-juego {
+    background: rgba(255, 255, 255, 0.95);
+    padding: clamp(15px, 3vw, 30px);
+    border-radius: 20px;
+    border: 4px solid #4a5568;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    max-width: min(95vw, 1400px);
+    width: 100%;
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+/* Efecto de brillo sutil en el contenedor */
+.contenedor-juego::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+    border-radius: 20px 20px 0 0;
+}
+
+/* Header mejorado */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.titulo {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    background: linear-gradient(135deg, #4a5568, #2d3748);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: clamp(15px, 2vw, 20px);
+    letter-spacing: clamp(2px, 0.5vw, 4px);
+    font-family: 'Courier New', monospace;
+    position: relative;
+}
+
+/* Tiempo con mejor diseño */
+.tiempo {
+    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+    background: linear-gradient(135deg, #1a202c, #2d3748);
+    color: #68d391;
+    padding: clamp(10px, 2vw, 15px) clamp(20px, 3vw, 25px);
+    border-radius: 15px;
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    border: 2px solid #4a5568;
+    letter-spacing: clamp(1px, 0.3vw, 2px);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(104, 211, 145, 0.2) inset;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de pulso en el tiempo */
+.tiempo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(104, 211, 145, 0.1), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+}
+
+/* Contenido principal mejorado */
+.contenedor-principal {
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr) minmax(350px, 1fr);
+    gap: clamp(20px, 3vw, 30px);
+    margin-bottom: clamp(20px, 3vw, 30px);
+}
+
+/* Area de dibujo mejorada */
+.area-dibujo {
+    background: linear-gradient(135deg, #f7fafc, #edf2f7);
+    border: 3px solid #4a5568;
+    aspect-ratio: 16/10;
+    position: relative;
+    border-radius: 15px;
+    min-height: clamp(200px, 25vw, 350px);
+    backdrop-filter: blur(2px);
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.1) inset,
+        0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección del abecedario */
+.seccion-abecedario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Botones de control mejorados */
+.botones-control {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(8px, 1.5vw, 12px);
+    margin-bottom: clamp(15px, 2vw, 20px);
+}
+
+.button-acciones {
+  display: inline-block;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: #ffffff;
+  padding: 0.8em 2em;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 0.5em;
+  background: #000;
+  border: 2px solid #00ffea;
+  box-shadow: 0 0 20px rgba(0, 255, 234, 0.5);
+}
+
+.button-acciones:active {
+  color: #ffffff;
+  box-shadow: inset 0 0 10px rgba(0, 255, 234, 0.7);
+}
+
+.button-acciones:before,
+.button-acciones:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 255, 234, 0.2);
+  z-index: -1;
+  transform: scale(0);
+  transition: transform 0.5s;
+  border-radius: inherit;
+}
+
+.button-acciones:before {
+  transition-delay: 0s;
+}
+
+.button-acciones:after {
+  transition-delay: 0.25s;
+}
+
+.button-acciones:hover:before,
+.button-acciones:hover:after {
+  transform: scale(1.2);
+}
+
+
+
+
+
+.contenedor-abecedario {
+    background: linear-gradient(135deg, #f7fafc, #edf2f7);
+    border: 3px solid #4a5568;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) inset;
+}
+
+.contenedor-abecedario::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #4a5568, transparent);
+}
+
+/* Grid del abecedario */
+.abecedario-tabla {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+    gap: clamp(6px, 1vw, 8px);
+    margin-top: 20px;
+    max-width: 100%;
+    justify-items: center;
+}
+
+/* Botones de las letras mejorados */
+.btn-letra {
+    width: clamp(40px, 7vw, 50px);
+    height: clamp(40px, 7vw, 50px);
+    background: linear-gradient(135deg, #ffffff, #f7fafc);
+    border: 2px solid #4a5568;
+    border-radius: 10px;
+    font-size: clamp(1rem, 2.2vw, 1.3rem);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #2d3748;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto hover mejorado */
+.btn-letra::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+
+.btn-letra:hover {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 12px rgba(72, 187, 120, 0.3);
+    border-color: #38a169;
+}
+
+.btn-letra:hover::before {
+    left: 100%;
+}
+
+.btn-letra:active {
+    transform: translateY(0) scale(1.02);
+}
+
+/* Estados de los botones */
+.btn-letra.used {
+    background: linear-gradient(135deg, #f56565, #e53e3e);
+    color: white;
+    cursor: not-allowed;
+    opacity: 0.8;
+    transform: none;
+    box-shadow: 0 2px 4px rgba(245, 101, 101, 0.3) inset;
+}
+
+.btn-letra.correct {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+    box-shadow: 0 2px 4px rgba(72, 187, 120, 0.3) inset;
+}
+
+/* Sección inferior */
+.seccion-abajo {
+    display: flex;
+    align-items: stretch;
+    gap: clamp(15px, 2.5vw, 20px);
+    flex-wrap: wrap;
+}
+
+/* Cuadro de intentos mejorado */
+.cuadro-intentos {
+    background: linear-gradient(135deg, #f7fafc, #edf2f7);
+    border: 3px solid #4a5568;
+    border-radius: 15px;
+    padding: clamp(12px, 2vw, 15px);
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 2vw, 15px);
+    backdrop-filter: blur(2px);
+    min-width: fit-content;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.numero-intentos {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #4a5568, #2d3748);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+/* Cuadro de las pistas mejorado */
+.rectangulo-pista {
+    flex: 1;
+    background: linear-gradient(135deg, #ffffff, #f7fafc);
+    border: 3px solid #4a5568;
+    border-radius: 15px;
+    padding: clamp(15px, 2.5vw, 20px);
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    text-align: center;
+    line-height: 1.5;
+    backdrop-filter: blur(2px);
+    font-family: 'Courier New', monospace;
+    min-width: 250px;
+    color: #2d3748;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) inset;
+    position: relative;
+}
+
+/* Efecto sutil en la pista */
+.rectangulo-pista::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(74, 85, 104, 0.3), transparent);
+    border-radius: 15px 15px 0 0;
+}
+/*Todo lo responsivo*/
+@media (min-width: 768px) {
+    .abecedario-tabla {
+        grid-template-columns: repeat(7, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .contenedor-principal {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 700px) {
+    .seccion-abajo {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .botones-control {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .abecedario-tabla {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 5px;
+    }
+
+    .btn-letra {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+
+    .botones-control {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .seccion-abajo {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 380px) and (min-height: 800px) {
+    .contenedor-juego {
+        padding: 10px;
+        max-width: 98vw;
+    }
+
+    .titulo {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+
+    .tiempo {
+        font-size: 1.3rem;
+        padding: 6px 12px;
+    }
+
+    .abecedario-tabla {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4px;
+    }
+
+    .btn-letra {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+        border: 2px solid #333;
+    }
+
+    .area-dibujo {
+        min-height: 180px;
+    }
+
+    .seccion-abajo {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .rectangulo-pista {
+        font-size: 0.8rem;
+        padding: 12px;
+        min-width: unset;
+    }
+}
+
+@media (max-width: 380px) and (max-height: 760px) {
+    .contenedor-juego {
+        padding: 8px;
+        max-width: 98vw;
+    }
+
+    .header {
+        margin-bottom: 15px;
+    }
+
+    .titulo {
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+    .tiempo {
+        font-size: 1.2rem;
+        padding: 5px 10px;
+    }
+
+    .contenedor-principal {
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .area-dibujo {
+        min-height: 150px;
+        aspect-ratio: 3/2;
+    }
+
+    .contenedor-abecedario {
+        padding: 12px;
+    }
+
+    .abecedario-tabla {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3px;
+        margin-top: 15px;
+    }
+
+    .btn-letra {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+        border: 2px solid #333;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        min-height: 35px;
+    }
+
+    .seccion-abajo {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .cuadro-intentos {
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .numero-intentos {
+        width: 35px;
+        height: 35px;
+        font-size: 1.3rem;
+    }
+
+    .rectangulo-pista {
+        font-size: 0.75rem;
+        padding: 10px;
+        line-height: 1.2;
+        min-width: unset;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 950px) and (orientation: portrait) {
+    .contenedor-juego {
+        max-width: 90vw;
+        padding: 25px;
+    }
+
+    .contenedor-principal {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .area-dibujo {
+        min-height: 300px;
+        max-height: 35vh;
+    }
+
+    .abecedario-tabla {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 8px;
+    }
+
+    .btn-letra {
+        width: 48px;
+        height: 48px;
+        font-size: 1.2rem;
+    }
+
+    .seccion-abajo {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .contenedor-principal {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo {
+        font-size: 2rem;
+    }
+
+    .tiempo {
+        font-size: 2rem;
+    }
+
+    .abecedario-tabla {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .seccion-abajo {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .abecedario-tabla {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .btn-letra {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+
+    .botones-control {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}
+@media (min-width: 768px) {
+    .abecedario-tabla {
+        grid-template-columns: repeat(7, 1fr);
+    }
+}

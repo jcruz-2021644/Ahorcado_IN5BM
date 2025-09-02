@@ -15,28 +15,33 @@
 
     </head>
     <body>
-        <div class="contenedor-juego" id="game-container">
+        <div class="contenedor-juego">
             <div class="header">
-                <h1 class="titulo" id="game-title">AHORCADO</h1>
-                <div class="tiempo" id="timer">06:00</div>
+                <h1 class="titulo">AHORCADO</h1>
+                <div class="tiempo">06:00</div>
             </div>
 
-            <div class="contenedor-principal" id="main-content">
-                <div class="area-dibujo" id="gameArea">
+            <div class="contenedor-principal" >
+                <div class="area-dibujo">
                 </div>
 
-                <div class="seccion-abecedario" id="alphabet-section">
+                <div class="seccion-abecedario">
 
-                    <div class="botones-control" id="control-buttons">
-                        <button class="btn-iniciar">INICIAR</button>
-                        <button class="btn-pausa">PAUSA</button>
-                        <button class="btn-reiniciar">REINICIAR</button>
-                        <button class="btn-salir">SALIR</button>
+                    <div class="botones-control" >
+                        <button class="button-acciones">Iniciar</button>
+                        
+                        <button class="button-acciones">Reiniciar</button>
+                        
+                       <button class="button-acciones">Salir</button>
+                        
+                        <button class="button-acciones">Pausar</button>
+                        
+                     
                     </div>
 
 
-                    <div class="contenedor-abecedario" id="alphabet-container">
-                        <div class="abecedario-tabla" id="alphabetGrid">
+                    <div class="contenedor-abecedario" >
+                        <div class="abecedario-tabla">
                             <button class="btn-letra">A</button>
                             <button class="btn-letra">B</button>
                             <button class="btn-letra">C</button>
@@ -68,9 +73,9 @@
                     </div>
                 </div>
             </div>
-            <div class="seccion-abajo" id="bottom-section">
-                <div class="cuadro-intentos" id="attempts-box">
-                    <div class="numero-intentos" id="attempts-icon">6</div>
+            <div class="seccion-abajo">
+                <div class="cuadro-intentos" >
+                    <div class="numero-intentos">6</div>
                     <span>INTENTOS</span>
                 </div>
                 <div class="rectangulo-pista" id="message-box">
@@ -79,5 +84,6 @@
                         LAS PALABRAS AL HABLAR.</strong>
                 </div>
             </div>
+        </div>
     </body>
 </html>

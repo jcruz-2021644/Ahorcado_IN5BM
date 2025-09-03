@@ -30,6 +30,10 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Index/ahorcado.jsp").forward(request, response);
         } else if (menu.equals("Index")) {
             request.getRequestDispatcher("index.jsp").forward(request, response);
+        }else if (menu.equals("Principal")) {
+            request.getRequestDispatcher("Index/principal.jsp").forward(request, response);
+        }else if (menu.equals("Index")) {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 

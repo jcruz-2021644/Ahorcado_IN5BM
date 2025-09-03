@@ -473,7 +473,7 @@ btnReiniciar.addEventListener('click', function () {
 btnPausar.addEventListener('click', pausarJuego);
 //boton salir
 btnSalir.addEventListener('click', () => {
-    window.location.href = "Controlador?menu=Index";
+    window.location.href = "Controlador?menu=Principal";
 });
 
 // Inicialización al cargar la pagina

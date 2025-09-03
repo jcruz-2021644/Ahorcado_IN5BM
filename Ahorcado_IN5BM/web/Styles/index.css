@@ -54,7 +54,7 @@ nav .logo {
     text-transform: capitalize;
 }
 
-/*la letra que esta dentro del span de color Celeste*/
+/*la letra que esta dentro del span de color violeta*/
 nav .logo span {
     color: blueviolet;
 }
@@ -74,7 +74,7 @@ nav .container {
 .informacion .line {
     width: 15%;
     height: 2px;
-    background-color: #00b7ff;
+    background-color: #8B5CF6;
     display: inline-block;
 }
 
@@ -108,7 +108,7 @@ a {
 .btnContacto {
     height: 44px;
     padding: 0px 30px;
-    background-color: #00b7ff;
+    background-color: #8B5CF6;
     border-radius: 4px;
     font-size: 13px;
     font-weight: 600;
@@ -126,7 +126,7 @@ a {
 
 .btnContacto:hover {
     background-color: white;
-    color: #00b7ff;
+    color: #8B5CF6;
     box-shadow: 0 8px 24px 0 rgba(138, 140, 146, .2);
     transform: scale(1.1) translateY(-3px);
 }
@@ -135,7 +135,7 @@ a {
 .btnIniciar {
     height: 44px;
     padding: 0px 30px;
-    background-color: #00b7ff;
+    background-color: #8B5CF6;
     border-radius: 4px;
     font-size: 13px;
     font-weight: 700;
@@ -153,7 +153,7 @@ a {
 
 .btnIniciar:hover {
     background-color: white;
-    color: #00b7ff;
+    color: #8B5CF6;
     box-shadow: 0 8px 24px 0 rgba(138, 140, 146, .2);
     transform: scale(1.1) translateY(-3px);
 }
@@ -162,7 +162,7 @@ a {
 .btnRegistrar {
     height: 44px;
     padding: 0px 30px;
-    background-color: #00b7ff;
+    background-color: #8B5CF6;
     border-radius: 4px;
     font-size: 13px;
     font-weight: 600;
@@ -180,7 +180,7 @@ a {
 
 .btnRegistrar:hover {
     background-color: white;
-    color: #00b7ff;
+    color: #8B5CF6;
     box-shadow: 0 8px 24px 0 rgba(138, 140, 146, .2);
     transform: scale(1.1) translateY(-3px);
 }
@@ -198,7 +198,7 @@ a {
 }
 
 .redes-sociales a:hover {
-    color: #00b7ff;
+    color: #8B5CF6;
 }
 
 .form {
@@ -234,7 +234,7 @@ input[type="checkbox"] {
     width: 60px;
     height: 16px;
     border-radius: 8px;
-    background-color: #00b7ff;
+    background-color: #8B5CF6;
     padding: 0;
     margin: 10px auto;
     cursor: pointer;
@@ -247,7 +247,7 @@ input[type="checkbox"] {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    color: #00b7ff;
+    color: #8B5CF6;
     background-color: white;
     font-family: 'Material Icons';
     content: '\f1e2';
@@ -271,7 +271,7 @@ input[type="checkbox"] {
 }
 
 .link:hover {
-    color: #00b7ff;
+    color: #8B5CF6;
 }
 
 .login h6 span {
@@ -390,7 +390,7 @@ input[type="checkbox"] {
     height: 48px;
     font-size: 24px;
     text-align: left;
-    color: #00b7ff;
+    color: #8B5CF6;
     transition: all .2s linear;
 }
 
@@ -436,7 +436,7 @@ input[type="checkbox"] {
     nav ul li a.active,
     nav ul li a:hover {
         background: none;
-        color: #00b7ff;
+        color: #8B5CF6;
     }
 
     .informacion h2 {

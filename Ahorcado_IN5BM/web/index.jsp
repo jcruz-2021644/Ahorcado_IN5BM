@@ -81,7 +81,7 @@
                                         <!-- FORMULARIO DE REGISTRO -->
                                         <div class="card-back">
                                             <div class="center-wrap">
-                                                <form action="Controlador?menu=Usuarios&accion=RegistroLogin" method="post">
+                                                <form action="Controlador?menu=Index" method="post">
                                                     <h4 class="heading">Registrarse</h4>
 
                                                     <div class="form-group">

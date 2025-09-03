@@ -60,6 +60,9 @@
                 </div>
             </div>
         </div>
+        <script>
+            const contextPath = '${pageContext.request.contextPath}';
+        </script>
         <script src="${pageContext.request.contextPath}/JavaScript/ahorcado.js"></script>
 
     </body>

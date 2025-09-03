@@ -2,27 +2,27 @@ const palabras = [
     {
         palabra: "TORREFACTO",
         pista: "Negro como la noche, en taza me encontrarás, si me pruebas con azúcar, ¿sabes cómo me llamarás?",
-        imagen: "../Images/terrefacto.jpg"
+        imagen: contextPath + "/Images/terrefacto.jpg"
     },
     {
         palabra: "SEPTIEMBRE",
         pista: "Entre el calor que se apaga y el frío que viene ligero, traigo la patria en bandera y otoño en mi sombrero.",
-        imagen: "../Images/septiembre.jpg"
+        imagen: contextPath +"/Images/septiembre.jpg"
     },
     {
         palabra: "MANZANILLA",
         pista: "Soy una flor sencilla y pequeña, me buscan por mi sabor, en infusiones me toman para calmar el dolor.",
-        imagen: "../Images/manzanilla.jpg"
+        imagen: contextPath +"/Images/manzanilla.jpg"
     },
     {
         palabra: "BOMBARDERO",
         pista: "No soy ave, pero vuelo y en los cielos hago un estruendo, llevo bombas peligrosas cuando al combate me enciendo.",
-        imagen: "../Images/bombardero.jpg"
+        imagen: contextPath +"/Images/bombardero.jpg"
     },
     {
         palabra: "ABECEDARIO",
         pista: "De la A a la Z me puedes recitar, con mis letras se construyen las palabras al hablar.",
-        imagen: "../Images/abecedario.jpg"
+        imagen: contextPath + "/Images/abecedario.jpg"
     }
 ];
 const espacioPalabra = document.getElementById('palabra');
@@ -60,13 +60,13 @@ let juegoPausado = false;
 
 // Las imagenes de los del ahorcado
 const imagenesAhorcado = [
-    '../Images/ahorcado1.png', 
-    '../Images/ahorcado2.png', 
-    '../Images/ahorcado3.png', 
-    '../Images/ahorcado4.png', 
-    '../Images/ahorcado5.png', 
-    '../Images/ahorcado6.png', 
-    '../Images/ahorcado7.png'   
+    contextPath + '/Images/ahorcado1.png',
+    contextPath + '/Images/ahorcado2.png',
+    contextPath + '/Images/ahorcado3.png',
+    contextPath + '/Images/ahorcado4.png',
+    contextPath + '/Images/ahorcado5.png',
+    contextPath + '/Images/ahorcado6.png',
+    contextPath + '/Images/ahorcado7.png'
 ];
 // Elemento para mostrar la imagen del ahorcado
 const imagenAhorcado = document.getElementById('imagen-ahorcado') || crearElementoImagenAhorcado();
@@ -343,7 +343,7 @@ function actualizarDisplayPalabra() {
 // Nueva función para mostrar imagen del ahorcado
 function mostrarImagenAhorcado() {
     //total de intentos permitidos
-    const erroresActuales = 7 - intentos; 
+    const erroresActuales = 7 - intentos;
     //si el error es mayor a 0 y si los errores son menores o iguales al numero de imagenes del array
     if (erroresActuales > 0 && erroresActuales <= imagenesAhorcado.length) {
         //imagenAhorcado que es el elemento le ingreso una de las imagenes que corresponde al error el momento
@@ -385,7 +385,7 @@ function terminarJuego() {
     //y si estaba en pausa pues ya temino 
     juegoPausado = false;
     //el boton iniciar aparece otra vez por si queremos volver a jugar
-    btnIniciar.disabled = false;
+    btnIniciar.disabled = true;
     btnIniciar.textContent = 'Iniciar';
 }
 
@@ -473,7 +473,7 @@ btnReiniciar.addEventListener('click', function () {
 btnPausar.addEventListener('click', pausarJuego);
 //boton salir
 btnSalir.addEventListener('click', () => {
-    window.location.href = '../index.jsp';
+    window.location.href = "Controlador?menu=Index";
 });
 
 // Inicialización al cargar la pagina

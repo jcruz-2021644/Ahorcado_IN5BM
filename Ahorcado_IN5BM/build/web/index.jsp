@@ -23,8 +23,7 @@
     <body>
         <nav class="navbar">
             <div class="container">
-                <div class="logo">K<span>C</span></div>
-
+                <div class="logo">J<span>C</span></div>
             </div>
         </nav>
 
@@ -43,7 +42,6 @@
                             <a href="https://discord.gg/K5C57rwJGM"><i class="fa-brands fa-discord"></i></a>
                         </div>
                     </div>
-
 
                     <div class="login">
                         <div class="form">
@@ -71,9 +69,6 @@
                                                     <center>
                                                         <input type="submit" class="btnIniciar" name="accion" value="Ingresar" placeholder="Entrar">
                                                     </center>
-                                                    <p class="text-center">
-                                                        <a href="#" class="link">No te recuerdas de tu contraseña???</a>
-                                                    </p>
                                                 </form>
                                             </div>
                                         </div>
@@ -81,42 +76,49 @@
                                         <!-- FORMULARIO DE REGISTRO -->
                                         <div class="card-back">
                                             <div class="center-wrap">
-                                                <form action="Controlador?menu=Index" method="post">
+                                                <form action="Validar" method="post">
                                                     <h4 class="heading">Registrarse</h4>
 
                                                     <div class="form-group">
-                                                        <input type="text" name="txtUsuarioR" id="usuario_registro" class="form-style" placeholder="Email" autocomplete="off" required>
+                                                        <input type="text" name="txtUsuarioR" id="usuario_registro" class="form-style" placeholder="Email" required>
                                                         <i class="input-icon material-icons">perm_identity</i>
+
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <input type="password" name="txtPasswordR" id="password_registro" class="form-style" placeholder="Contraseña" autocomplete="off" required>
+                                                        <input type="password" name="txtPasswordR" id="password_registro" class="form-style" placeholder="Contraseña" required>
                                                         <i class="input-icon material-icons">lock</i>
+
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <input type="password" name="confirmar" id="confirmar_registro" class="form-style" placeholder="Confirmar contraseña" autocomplete="off" required>
+                                                        <input type="password" name="confirmar" id="confirmar_registro" class="form-style" placeholder="Confirmar contraseña" required>
                                                         <i class="input-icon material-icons">lock</i>
+
                                                     </div>
+
                                                     <c:if test="${not empty errorRegistro}">
                                                         <div class="alert-error-small">${errorRegistro}</div>
                                                     </c:if>
+                                                    <c:if test="${not empty mensajeExito}">
+                                                        <div class="alert-success-small">${mensajeExito}</div>
+                                                    </c:if>
+
                                                     <center>
-                                                        <button type="submit" class="btnRegistrar">Registrarme</button>
+                                                        <button type="submit" class="btnRegistrar" name="accion" value="Registrar">Registrarme</button>
                                                     </center>
                                                 </form>
                                             </div>
+
                                         </div>
-
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
-            </div>
         </section>
     </body>
 

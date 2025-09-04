@@ -1,51 +1,48 @@
 package modelo;
 
 import config.Conexion;
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class UsuariosDAO {
-
     Conexion cn = new Conexion();
-    Connection con;
-    PreparedStatement ps;
-    ResultSet rs;
-
+    Connection con; 
+    PreparedStatement ps;     
+    ResultSet rs;             
+    
     public Usuarios validar(String correoUsuario, String contraseñaUsuario) {
         Usuarios usuarios = new Usuarios();
-        String sql = "SELECT * FROM usuarios WHERE correoUsuario = ? AND contraseñaUsuario = ?";
 
+        String sql = "call sp_BuscarUsuarioLog(?, ?);"; 
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setString(1, correoUsuario);
-            ps.setString(2, contraseñaUsuario);
+            ps.setString(1, correoUsuario);      
+            ps.setString(2, contraseñaUsuario);  
             rs = ps.executeQuery();
 
-            if (rs.next()) {
+            while (rs.next()) {
                 usuarios.setCodigoUsuario(rs.getInt("codigoUsuario"));
-                usuarios.setNombreUsuario(rs.getString("nombreUsuario"));
-                usuarios.setApellidoUsuario(rs.getString("apellidoUsuario"));
+                usuarios.setContraseña(rs.getString("contraseña"));
                 usuarios.setCorreoUsuario(rs.getString("correoUsuario"));
-                usuarios.setContraseñaUsuario(rs.getString("contraseñaUsuario"));
-                return usuarios;
             }
         } catch (Exception e) {
-            System.out.println("Error al validar usuario: " + e.getMessage());
+            System.out.println("El usuario o contraseña son incorrectos");
             e.printStackTrace();
         }
-        return null;
+
+        return usuarios;
     }
 
-    public boolean registrar(String correoUsuario, String contraseñaUsuario) {
-        String sql = "call sp_AgregarUsuario1(?,?);";
+    public boolean registrar(String correo, String contraseña) {
+        String sql = "call sp_AgregarUsuario(?, ?);";
+
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setString(1, correoUsuario);
-            ps.setString(2, contraseñaUsuario);
+            ps.setString(1, correo);
+            ps.setString(2, contraseña);
             int filas = ps.executeUpdate();
             return filas > 0;
         } catch (Exception e) {

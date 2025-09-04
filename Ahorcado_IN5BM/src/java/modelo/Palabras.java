@@ -1,15 +1,15 @@
 package modelo;
 
-public class Personas {
+public class Palabras {
 
     private int codigoPalabra;
     private String palabra;
     private String pista;
 
-    public Personas() {
+    public Palabras() {
     }
 
-    public Personas(int codigoPalabra, String palabra, String pista) {
+    public Palabras(int codigoPalabra, String palabra, String pista) {
         this.codigoPalabra = codigoPalabra;
         this.palabra = palabra;
         this.pista = pista;

@@ -3,11 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: 'Courier New', monospace;
     font-weight: bold;
-    background-image: url(../Images/indexAhorcado.gif);
+  background-image: url("../Images/indexAhorcado.gif");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -17,22 +16,20 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
     padding: clamp(5px, 1vw, 20px);
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 }
-
 h1 {
-    color: #FFD700;
+    color:
+        #FFD700;
     text-align: center;
     margin-bottom: 40px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     font-size: clamp(1.5rem, 4vw, 2.5rem);
     max-width: 800px;
 }
-
 .animated-button {
     position: relative;
     display: flex;
@@ -45,29 +42,28 @@ h1 {
     background-color: inherit;
     border-radius: 100px;
     font-weight: 600;
-    color: #FF6B9D;
-    box-shadow: 0 0 0 2px #FF6B9D;
+    color:
+        #FF6B9D;
+    box-shadow: 0 0 0 2px
+        #FF6B9D;
     cursor: pointer;
     overflow: hidden;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
-
 .animated-button svg {
     position: absolute;
     width: 24px;
-    fill: #FF6B9D;
+    fill:
+        #FF6B9D;
     z-index: 9;
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
-
 .animated-button .arr-1 {
     right: 16px;
 }
-
 .animated-button .arr-2 {
     left: -25%;
 }
-
 .animated-button .circle {
     position: absolute;
     top: 50%;
@@ -75,48 +71,56 @@ h1 {
     transform: translate(-50%, -50%);
     width: 20px;
     height: 20px;
-    background-color: #FF6B9D;
+    background-color:
+        #FF6B9D;
     border-radius: 50%;
     opacity: 0;
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
-
 .animated-button .text {
     position: relative;
     z-index: 1;
     transform: translateX(-12px);
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
-
 .animated-button:hover {
     box-shadow: 0 0 0 12px transparent;
-    color: #212121;
+    color:
+        #212121;
     border-radius: 12px;
 }
-
 .animated-button:hover .arr-1 {
     right: -25%;
 }
-
 .animated-button:hover .arr-2 {
     left: 16px;
 }
-
 .animated-button:hover .text {
     transform: translateX(12px);
 }
-
 .animated-button:hover svg {
-    fill: #212121;
+    fill:
+        #212121;
 }
-
 .animated-button:active {
     scale: 0.95;
-    box-shadow: 0 0 0 4px #FF6B9D;
+    box-shadow: 0 0 0 4px
+        #FF6B9D;
 }
-
 .animated-button:hover .circle {
     width: 220px;
     height: 220px;
     opacity: 1;
+}
+.botones {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.btn-regresar .arr-1,
+.btn-regresar .arr-2 {
+    transform: rotate(180deg);
 }

@@ -1,30 +1,14 @@
-const palabras = [
-    {
-        palabra: "TORREFACTO",
-        pista: "Negro como la noche, en taza me encontrarás, si me pruebas con azúcar, ¿sabes cómo me llamarás?",
-        imagen: contextPath + "/Images/terrefacto.jpg"
-    },
-    {
-        palabra: "SEPTIEMBRE",
-        pista: "Entre el calor que se apaga y el frío que viene ligero, traigo la patria en bandera y otoño en mi sombrero.",
-        imagen: contextPath +"/Images/septiembre.jpg"
-    },
-    {
-        palabra: "MANZANILLA",
-        pista: "Soy una flor sencilla y pequeña, me buscan por mi sabor, en infusiones me toman para calmar el dolor.",
-        imagen: contextPath +"/Images/manzanilla.jpg"
-    },
-    {
-        palabra: "BOMBARDERO",
-        pista: "No soy ave, pero vuelo y en los cielos hago un estruendo, llevo bombas peligrosas cuando al combate me enciendo.",
-        imagen: contextPath +"/Images/bombardero.jpg"
-    },
-    {
-        palabra: "ABECEDARIO",
-        pista: "De la A a la Z me puedes recitar, con mis letras se construyen las palabras al hablar.",
-        imagen: contextPath + "/Images/abecedario.jpg"
-    }
-];
+// Cambiar la declaración del array de palabras
+let palabras = []; 
+
+const imagenesQuemadas = {
+    "TORREFACTO": contextPath + "/Images/terrefacto.jpg",
+    "SEPTIEMBRE": contextPath + "/Images/septiembre.jpg",
+    "MANZANILLA": contextPath + "/Images/manzanilla.jpg",
+    "BOMBARDERO": contextPath + "/Images/bombardero.jpg",
+    "ABECEDARIO": contextPath + "/Images/abecedario.jpg",
+    "PRECIDENTE": contextPath + "/Images/presidente.jpg"
+};
 const espacioPalabra = document.getElementById('palabra');
 const pistaElemento = document.getElementById('pista');
 const intentosElementos = document.getElementById('intentos');
@@ -86,6 +70,26 @@ function crearElementoImagenAhorcado() {
     return img;
 }
 
+function cargarPalabras() {
+    return fetch(contextPath + '/AhorcadoController?action=obtenerPalabras')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta del servidor');
+                }
+                return response.json();
+            })
+            .then(data => {
+                palabras.length = 0;
+                data.forEach(item => {
+                    palabras.push({
+                        palabra: item.palabra.toUpperCase(),
+                        pista: item.pista,
+                        imagen: imagenesQuemadas[item.palabra.toUpperCase()] || contextPath + "/Images/default.jpg"
+                    });
+                });
+                return palabras;
+            });
+}
 
 function formatearTiempo(segundos) {
     // pasamos de segundos a minutos y suamos el floor para no tener decimales solo enteros
@@ -136,7 +140,7 @@ function actualizarTemporizador() {
 }
 
 // Iniciar juego
-function iniciarJuego() {
+async function iniciarJuego() {
     // Si el juego está pausado solamnete lo renauramos y el return solo esta para cortar la ejecucion
     if (juegoPausado) {
         reanudarJuego();
@@ -146,6 +150,22 @@ function iniciarJuego() {
     // juegoiniciado= true y juegoterminado=false
     // Si el juego ya está iniciado y no terminado no hace nada porque no tiene que vover a reinicar 
     if (juegoIniciado && !juegoTerminado) {
+        return;
+    }
+
+    // Verificar si las palabras están cargadas
+    if (palabras.length === 0) {
+        try {
+            mostrarMensaje('Cargando palabras...', 'info');
+            await cargarPalabras();
+        } catch (error) {
+            mostrarMensaje('Error al cargar las palabras. Usando palabras de respaldo.', 'error');
+        }
+    }
+
+    // Verificar nuevamente si tenemos palabras
+    if (palabras.length === 0) {
+        mostrarMensaje('No se pudieron cargar las palabras del juego.', 'error');
         return;
     }
     //ponemos los estados del juego en empezado no pausado y no terminado
@@ -473,10 +493,24 @@ btnReiniciar.addEventListener('click', function () {
 btnPausar.addEventListener('click', pausarJuego);
 //boton salir
 btnSalir.addEventListener('click', () => {
-    window.location.href = "Controlador?menu=Index";
+    window.location.href = "Controlador?menu=Principal";
+}
+);
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Crear el teclado
+    crearTeclado();
+    // Resetear el muñeco
+    resetImagenAhorcado();
+    // Quitar la imagen
+    imagenElement.style.display = 'none';
+    // Resetear tiempo
+    tiempoDisplay.textContent = formatearTiempo(tiempoRestante);
 });
 
+
 // Inicialización al cargar la pagina
+cargarPalabras();
 //creamos el teclado
 crearTeclado();
 //receteamos el muñeco

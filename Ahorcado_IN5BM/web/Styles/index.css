@@ -18,7 +18,7 @@ body {
     letter-spacing: 1px;
     font-weight: normal;
     background-color: black;
-    background-image: url(../Images/ahorcadoFondo.gif);
+    background-image: url(../Images/fondoLogin.gif);
     /*la imagen de fondo */
     background-size: cover;
 }

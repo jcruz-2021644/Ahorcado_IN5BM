@@ -6,7 +6,7 @@
 body {
     font-family: 'Courier New', monospace;
     font-weight: bold;
-  background-image: url("../Images/indexAhorcado.gif");
+    background-image: url("../Images/indexAhorcado.gif");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

@@ -71,22 +71,39 @@ function crearElementoImagenAhorcado() {
 }
 
 function cargarPalabras() {
+    //llamamos a la API fetch la peticion HTTP usando la ruta con nuestro contextPath para llamar a nuestro controlador
+   // por medio del fetch nos regegresa una pormesa que se resuelcel en el response cuan llega la rspuesta a nuestro servidor
+   // por eso cargarPalabras() solo devuelve una promesa en el llamdador .then()
     return fetch(contextPath + '/AhorcadoController?action=obtenerPalabras')
+            //entonces empieza lo priemro el encadenado de la promesa 
             .then(response => {
+                // si el responce.ok es verdadero o sea si el estado HTTP es de 200-299 y sino es un eerro de la respuesta al server
+                //  ue es lo que esta dentro del if
                 if (!response.ok) {
                     throw new Error('Error en la respuesta del servidor');
                 }
+                //si ok si es verdadero trae nuestro json que devuelve un objeto o array que seria otra promesa
                 return response.json();
             })
+            
+            // la optra parte es cuando el response.json se resuelve y el data contiene el json el cual espera el arra de nuestro objeto creado
+            // lo que creamos arribo el codigoPalabra, palabra y pista
             .then(data => {
+                //vaciamos el array
                 palabras.length = 0;
+                //iteramos sobre cada elemento del dato 
                 data.forEach(item => {
+                    // a nuestro arry de palabras le vamos a agregar por el push la palabra, pista y la imagen
                     palabras.push({
+                        //tomamos el item palabra y lo convertimos en mayusculas con el UpperCase() y lo guardamos en la propiedad palabra 
                         palabra: item.palabra.toUpperCase(),
+                        // copiamos la pista en el item al nuevo objeto y lo guardamos en la porpiedad pista
                         pista: item.pista,
+                        //quemamos una imagen por default
                         imagen: imagenesQuemadas[item.palabra.toUpperCase()] || contextPath + "/Images/default.jpg"
                     });
                 });
+                //retornamos nuestro array palabras dentro del .then y asi se puede llamar el carga Palabras y ya resibuira la lista actualizada
                 return palabras;
             });
 }
@@ -140,6 +157,7 @@ function actualizarTemporizador() {
 }
 
 // Iniciar juego
+// decalaramos la funcion como async para poder usar el await dentro de la funcion y asi devolver una promesa
 async function iniciarJuego() {
     // Si el juego está pausado solamnete lo renauramos y el return solo esta para cortar la ejecucion
     if (juegoPausado) {
@@ -153,18 +171,21 @@ async function iniciarJuego() {
         return;
     }
 
-    // Verificar si las palabras están cargadas
+    // comprobamos si el array palabras esta vacio por el === 
     if (palabras.length === 0) {
+        //si se muestra el mensaje cargar palabtas llamamos a nuestro cargarPalabras() y esperamos que el await termine
         try {
             mostrarMensaje('Cargando palabras...', 'info');
             await cargarPalabras();
         } catch (error) {
+           //y si al final tenemos un errro de carga o no se puestra nada nos muestra este mensaje
             mostrarMensaje('Error al cargar las palabras. Usando palabras de respaldo.', 'error');
         }
     }
 
     // Verificar nuevamente si tenemos palabras
     if (palabras.length === 0) {
+        //si sigue vacio decimos que las palabras no se cargan en el juego y retornamos el mensaje 
         mostrarMensaje('No se pudieron cargar las palabras del juego.', 'error');
         return;
     }

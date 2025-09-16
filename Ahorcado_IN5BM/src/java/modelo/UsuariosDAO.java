@@ -23,9 +23,9 @@ public class UsuariosDAO {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                usuarios.setCodigoUsuario(rs.getInt("codigoUsuario"));
+                usuarios.setCodigoUsuario(rs.getInt("codigo_usuario"));
                 usuarios.setContraseña(rs.getString("contraseña"));
-                usuarios.setCorreoUsuario(rs.getString("correoUsuario"));
+                usuarios.setCorreoUsuario(rs.getString("correo_usuario"));
             }
         } catch (Exception e) {
             System.out.println("El usuario o contraseña son incorrectos");

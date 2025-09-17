@@ -21,8 +21,12 @@ public class PalabraController {
     }
 
     @GetMapping("/{codigoPalabra}")
-    public Palabra getPalabraById(@PathVariable Integer codigoPalabra){
-        return palabraService.getPalabraById(codigoPalabra);
+    public Object getPalabraById(@PathVariable Integer codigoPalabra){
+        Palabra palabra = palabraService.getPalabraById(codigoPalabra);
+        if (palabra == null){
+            return "No se encontro ninguna palabra con ese id";
+        }
+        return palabra;
     }
 
     @PostMapping
@@ -64,6 +68,10 @@ public class PalabraController {
 
     @DeleteMapping("/{codigoPalabra}")
     public String deletePalabra(@PathVariable Integer codigoPalabra){
+        Palabra palabra = palabraService.getPalabraById(codigoPalabra);
+        if (palabra == null){
+            return "No se encontro ninguna palabra con ese id para eliminar";
+        }
         palabraService.deletePalabra(codigoPalabra);
         return "Palabra y pista eliminada correctamente";
     }

@@ -6,8 +6,7 @@ const imagenesQuemadas = {
     "SEPTIEMBRE": contextPath + "/Images/septiembre.jpg",
     "MANZANILLA": contextPath + "/Images/manzanilla.jpg",
     "BOMBARDERO": contextPath + "/Images/bombardero.jpg",
-    "ABECEDARIO": contextPath + "/Images/abecedario.jpg",
-    "PRECIDENTE": contextPath + "/Images/presidente.jpg"
+    "ABECEDARIO": contextPath + "/Images/abecedario.jpg"
 };
 const espacioPalabra = document.getElementById('palabra');
 const pistaElemento = document.getElementById('pista');
@@ -101,9 +100,10 @@ function cargarPalabras() {
                         pista: item.pista,
                         //quemamos una imagen por default
                         imagen: imagenesQuemadas[item.palabra.toUpperCase()] || contextPath + "/Images/default.jpg"
-                    });
+                    }); 
                 });
-                //retornamos nuestro array palabras dentro del .then y asi se puede llamar el carga Palabras y ya resibuira la lista actualizada
+                //retorn
+                //amos nuestro array palabras dentro del .then y asi se puede llamar el carga Palabras y ya resibuira la lista actualizada
                 return palabras;
             });
 }

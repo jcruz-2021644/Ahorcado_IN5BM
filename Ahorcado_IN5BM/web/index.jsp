@@ -77,6 +77,15 @@
                                         <div class="card-back">
                                             <div class="center-wrap">
                                                 <form action="Validar" method="post">
+                                                    <h4 class="heading">Ya no existe el metodo registrar porque ahora se trabaja con postman</h4>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                        <!-- 
+                                        <div class="card-back">
+                                            <div class="center-wrap">
+                                                <form action="Validar" method="post">
                                                     <h4 class="heading">Registrarse</h4>
 
                                                     <div class="form-group">
@@ -111,6 +120,7 @@
                                             </div>
 
                                         </div>
+                                         -->
                                     </div>
 
                                 </div>

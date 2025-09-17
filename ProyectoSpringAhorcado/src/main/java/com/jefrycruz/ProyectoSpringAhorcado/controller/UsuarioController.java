@@ -23,8 +23,12 @@ public class UsuarioController {
     }
 
     @GetMapping("/{codigoUsuario}")
-    public Usuario getUsuarioById(@PathVariable Integer codigoUsuario){
-        return usuarioService.getUsuarioById(codigoUsuario);
+    public Object getUsuarioById(@PathVariable Integer codigoUsuario){
+        Usuario usuario = usuarioService.getUsuarioById(codigoUsuario);
+        if (usuario == null){
+            return "No se encontro el id del usuario";
+        }
+        return usuario;
     }
 
     @PostMapping
@@ -60,6 +64,11 @@ public class UsuarioController {
 
     @DeleteMapping("/{codigoUsuario}")
     public String deleteUsuario(@PathVariable Integer codigoUsuario){
+
+        Usuario usuario = usuarioService.getUsuarioById(codigoUsuario);
+        if (usuario == null){
+            return "No se encontro el usuario con ese id para ser eliminado";
+        }
         usuarioService.deleteUsuario(codigoUsuario);
         return "Usuario eliminado correctamente";
     }

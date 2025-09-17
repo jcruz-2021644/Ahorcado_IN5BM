@@ -27,6 +27,15 @@ public class PalabraServiceImplement implements PalabraService{
 
     @Override
     public Palabra savePalabra(Palabra palabra) {
+        if (palabra.getPalabra() == null || palabra.getPalabra().trim().isEmpty()){
+            palabra.setPalabra("error_espacio_vacio");
+            return palabra;
+        }
+
+        if (palabra.getPista() == null || palabra.getPista().trim().isEmpty()){
+            palabra.setPista("error_espacio_vacio");
+            return palabra;
+        }
         List<Palabra> lista = palabraRepository.findAll();
         for (Palabra u : lista) {
             if (u.getPalabra().equalsIgnoreCase(palabra.getPalabra())) {
@@ -44,6 +53,15 @@ public class PalabraServiceImplement implements PalabraService{
 
     @Override
     public Palabra updatePalabra(Integer codigoPalabra, Palabra palabra) {
+        if (palabra.getPalabra() == null || palabra.getPalabra().trim().isEmpty()){
+            palabra.setPalabra("error_espacio_vacio");
+            return palabra;
+        }
+
+        if (palabra.getPista() == null || palabra.getPista().trim().isEmpty()){
+            palabra.setPista("error_espacio_vacio");
+            return palabra;
+        }
         Palabra existePalabra = palabraRepository.findById(codigoPalabra).orElse(null);
         if (existePalabra != null) {
             List<Palabra> lista = palabraRepository.findAll();

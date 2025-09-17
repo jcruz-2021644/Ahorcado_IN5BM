@@ -31,11 +31,19 @@ public class UsuarioServiceImplement implements UsuarioService {
     @Override
     public Usuario saveUsuario(Usuario usuario) {
         ValidacionCorreo.validarCorreo(usuario.getCorreoUsuario());
+        if (usuario.getContraseña() == null || usuario.getContraseña().trim().isEmpty()){
+            usuario.setContraseña("error_espacio_vacio");
+            return usuario;
+        }
 
         List<Usuario> lista = usuarioRepository.findAll();
         for (Usuario u : lista) {
             if (u.getCorreoUsuario().equalsIgnoreCase(usuario.getCorreoUsuario())) {
                 usuario.setCorreoUsuario("error_en_el_correo");
+                return usuario;
+            }
+            if (u.getCodigoUsuario() == usuario.getCodigoUsuario()) {
+                usuario.setCorreoUsuario("error_en_el_id");
                 return usuario;
             }
 
@@ -46,6 +54,10 @@ public class UsuarioServiceImplement implements UsuarioService {
     @Override
     public Usuario updateUsuario(Integer codigoUsuario, Usuario usuario) {
         ValidacionCorreo.validarCorreo(usuario.getCorreoUsuario());
+        if (usuario.getContraseña() == null || usuario.getContraseña().trim().isEmpty()){
+            usuario.setContraseña("error_espacio_vacio");
+            return usuario;
+        }
         Usuario existeUsuario = usuarioRepository.findById(codigoUsuario).orElse(null);
         if (existeUsuario != null) {
             List<Usuario> lista = usuarioRepository.findAll();

@@ -31,9 +31,15 @@ public class PalabraController {
 
     @PostMapping
     public String createPalabra(@RequestBody Palabra palabra){
+
         try {
             Palabra result = palabraService.savePalabra(palabra);
-
+            if ("error_espacio_vacio".equals(result.getPalabra())){
+                return ("La Palabra no puede estar vacio");
+            }
+            if ("error_espacio_vacio".equals(result.getPista())){
+                return ("La Pista no puede estar vacio");
+            }
             if ("error_en_la_palabra".equals(result.getPalabra())){
                 return "La palabra ya fue registrado previamente";
             }
@@ -49,10 +55,20 @@ public class PalabraController {
 
     @PutMapping("/{codigoPalabra}")
     public String updatePalabra(@PathVariable Integer codigoPalabra, @RequestBody Palabra palabra) {
+        if (palabra.getCodigoPalabra() != null) {
+            return "No sea loko bro es un post no put";
+        }
+
         try {
             Palabra result = palabraService.updatePalabra(codigoPalabra, palabra);
             if (result == null) {
                 return "La palabra no se encontro";
+            }
+            if ("error_espacio_vacio".equals(result.getPalabra())){
+                return ("La Palabra no puede estar vacio");
+            }
+            if ("error_espacio_vacio".equals(result.getPista())){
+                return ("La Pista no puede estar vacio");
             }
             if ("error_en_la_palabra".equals(result.getPalabra())){
                 return "La palabra ya fue registrado previamente";

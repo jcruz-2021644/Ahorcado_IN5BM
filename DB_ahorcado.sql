@@ -17,6 +17,32 @@ create table Palabras(
     primary key PK_codigo_palabra(codigo_palabra)
 );
 
+-- La implementacion de los datos de los usuarios
+Delimiter //
+	Create Trigger tr_Before_Insert_CorreoUsuarios
+	Before Insert on Usuarios
+    For each row
+		Begin
+			If (new.correo_usuario not like '%@gmail.com' and new.correo_usuario not like '%@kinal.edu.gt')  Then
+				Signal Sqlstate '45000' 
+				set Message_text = 'El correo electrónico debe tener el dominio @gmail.com o @kinal.edu.gt';
+			end if;
+        End//
+Delimiter ;
+ 
+Delimiter //
+	Create Trigger tr_Before_Update_CorreoUsuarios
+	Before Update on Usuarios
+    For each row
+		Begin
+			If (new.correo_usuario not like '%@gmail.com' and new.correo_usuario not like '%@kinal.edu.gt')  Then
+				Signal Sqlstate '45000' 
+				set Message_text = 'El correo electrónico debe tener el dominio @gmail.com o @kinal.edu.gt';
+			end if;
+        End//
+Delimiter ;
+
+
 -- CRUD USUARIOS
 Delimiter //
 	Create procedure sp_AgregarUsuario( 
@@ -27,11 +53,16 @@ Delimiter //
 				Values(correo_usuario, contraseña);
         End //
 Delimiter ;
-call sp_AgregarUsuario('1', '1');
+call sp_AgregarUsuario('Roberto@kinal.edu.gt', '1');
 call sp_AgregarUsuario('ana.gomez@gmail.com', 'AGomez*88');
 call sp_AgregarUsuario('luis.martinez@gmail.com',  'LMartinez@11');
 call sp_AgregarUsuario('maria.fernandez@gmail.com',  'MFernandez#01');
-call sp_AgregarUsuario('jorge.lopez@gmail.com', 'JLopez@45');
+call sp_AgregarUsuario('jefryyu67@gmail.com', 'Jcruz');
+call sp_AgregarUsuario('pedroLopez@gmail.com', 'PLopez');
+call sp_AgregarUsuario('Humbertohor@gmail.com', 'Hhor');
+call sp_AgregarUsuario('calanchetzi@gmail.com', 'Ctzi');
+call sp_AgregarUsuario('PabloCalderon@gmail.com', 'PCalderon');
+call sp_AgregarUsuario('PabloDeLeon@gmail.com', 'PLeon');
 
 
 Delimiter //
@@ -103,7 +134,12 @@ call sp_AgregarPalabra('TORREFACTO', 'Negro como la noche, en taza me encontrar�
 call sp_AgregarPalabra('SEPTIEMBRE', 'Entre el calor que se apaga y el frío que viene ligero, traigo la patria en bandera y otoño en mi sombrero.');
 call sp_AgregarPalabra('MANZANILLA', 'Soy una flor sencilla y pequeña, me buscan por mi sabor, en infusiones me toman para calmar el dolor.');
 call sp_AgregarPalabra('PRECIDENTE', 'Soy uno de los que dio taco de banano');
-call sp_AgregarPalabra('ABECEDARIO', 'De la A a la Z me puedes recitar, con mis letras se construyen las palabras al hablar.');
+call sp_AgregarPalabra('RAM', 'Es lo que le hace falta a Jimenez.');
+call sp_AgregarPalabra('MOTO', 'Es lo que tiene Rhandy.');
+call sp_AgregarPalabra('ETICA', 'La clase de Balan.');
+call sp_AgregarPalabra('HOR', 'El mejor profe de info de 5to.');
+call sp_AgregarPalabra('TECLADO', 'Me usan para escribir en la pc.');
+call sp_AgregarPalabra('JULIO', 'Es uno de los hermanos gemelos no es de info.');
 
 Delimiter //
 	Create procedure sp_ListarPalabra()

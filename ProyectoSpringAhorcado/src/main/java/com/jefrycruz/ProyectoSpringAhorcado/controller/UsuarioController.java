@@ -33,8 +33,14 @@ public class UsuarioController {
 
     @PostMapping
     public String createUsuario(@RequestBody Usuario usuario){
+        if (usuario.getCodigoUsuario() != null) {
+            return "No sea loko bro es un post no put";
+        }
         try {
             Usuario result = usuarioService.saveUsuario(usuario);
+            if ("error_espacio_vacio".equals(result.getContraseña())){
+                return ("La contraseña no puede estar vacio");
+            }
 
             if ("error_en_el_correo".equals(result.getCorreoUsuario())){
                 return "El correo ya fue registrado previamente";
@@ -52,6 +58,10 @@ public class UsuarioController {
             Usuario result = usuarioService.updateUsuario(codigoUsuario, usuario);
             if (result == null) {
                 return "El Usuario no se encontro";
+            }
+
+            if ("error_espacio_vacio".equals(result.getContraseña())){
+                return ("La contraseña no puede estar vacio");
             }
             if ("error_en_el_correo".equals(result.getCorreoUsuario())) {
                 return "El correo ya fue registrado previamente";

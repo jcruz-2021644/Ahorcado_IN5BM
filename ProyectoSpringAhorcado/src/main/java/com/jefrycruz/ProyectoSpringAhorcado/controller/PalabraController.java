@@ -52,7 +52,11 @@ public class PalabraController {
         }
 
     }
+    @PutMapping
+    public String updatePalabra(){
+        return "Ingrese el id para poder actualizar el la palabra";
 
+    }
     @PutMapping("/{codigoPalabra}")
     public String updatePalabra(@PathVariable Integer codigoPalabra, @RequestBody Palabra palabra) {
         if (palabra.getCodigoPalabra() != null) {
@@ -81,7 +85,11 @@ public class PalabraController {
             return e.getMessage();
         }
     }
+    @DeleteMapping
+    public String deletePalabra(){
+        return "Ingrese el id para poder eliminar la palabra";
 
+    }
     @DeleteMapping("/{codigoPalabra}")
     public String deletePalabra(@PathVariable Integer codigoPalabra){
         Palabra palabra = palabraService.getPalabraById(codigoPalabra);

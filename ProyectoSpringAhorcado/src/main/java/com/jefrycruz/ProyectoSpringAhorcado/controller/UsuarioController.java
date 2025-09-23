@@ -52,6 +52,11 @@ public class UsuarioController {
 
     }
 
+    @PutMapping
+    public String updateUsuario(){
+        return "Ingrese el id para poder actualizar el usuario";
+
+    }
     @PutMapping("/{codigoUsuario}")
     public String updateUsuario(@PathVariable Integer codigoUsuario, @RequestBody Usuario usuario) {
         try {
@@ -70,6 +75,11 @@ public class UsuarioController {
         }catch (CorreoInvalido e){
             return e.getMessage();
         }
+    }
+    @DeleteMapping
+    public String deleteUsuario(){
+        return "Ingrese el id para poder eliminar el usuario";
+
     }
 
     @DeleteMapping("/{codigoUsuario}")
